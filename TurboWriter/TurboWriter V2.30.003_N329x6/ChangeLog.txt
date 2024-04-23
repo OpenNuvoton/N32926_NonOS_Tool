@@ -1,0 +1,114 @@
+V2.01.001 :	Support W55FA93 with SD booting USB firmware
+V2.01.002 :	Add musb.bin to support W55FA91 and fix some 
+		low USB performance desktop may connect W55FA91 fail issue
+V2.01.003 :	Fix V2.01.002 still use 16 bytes file name to access W55FA93 issue
+V2.01.004 :	Add FA93_musb.bin to support W55FA93 ver C,
+		the W55FA93 ver C does not need SD boot disk
+v2.01.005 :	Fix the negative capacity issue
+                Change SDHC Frequency from 50MHz to 24MHz
+v2.01.006 :	Fix unable to specify the Image execute address of Logo in SD card option
+v2.01.007 :	Support "Enable SD format" option for SD solution
+v2.01.008 :	Support SD port 0/1/2 operations
+		Support display SPI flash size
+		Fix Turbowriter SPI add Logo issue (Logo execute address can't be set)
+v2.01.011 :	For VA91/VA93/FA95 and Fix SPI(Raw data) issue
+		Fix SPI(Raw data) issue - Turbowriter sends Boot code header every 64KB.
+		FA95 Turbowriter 1st version
+		User can add Optional marker in Boot Header by adding information in TurboWriter.ini.  
+		User can let IBR to set Value to Register when USB Booting by adding information in TurboWriter.ini. 
+		Ex: Set Register 0xB0003000 to 0x00130456	
+			[USER_DEFINE]
+ 			 B0003000 = 00130456
+v2.10.001 :	Modify connect flow for FA95C 
+v2.10.002 :	Fix the MakeROM function for FA93/95
+		Add new function in SPI(Raw Data) - Read back from SPI	
+		Using SPIFLASH ID.ini function to support the SPI flash that not support (Size unit is KB)
+v2.10.003 :	Fix Turbowriter firmware size limitation
+		Support FA92
+v2.20.001 :	Support N3290xD & N3290xE
+		Support [USER_DEFINE] option for N329x in INI file
+			[N3290 USER_DEFINE]
+			[N3291 USER_DEFINE]
+			[N3292 USER_DEFINE]
+v2.20.002 :	Support NAND UBIFS mode in ini file ¡V NAND_MODE = 0/1:Normal Mode/UBIFS Mode
+v2.20.003 :	Remove NAND UBIFS mode in ini file
+		Support NAND/SPI UBIFS Image
+v2.20.004 :	Fix N3292 (D Version) USB Booting Fail issue when DRAM Calibration Fails.
+v2.20.005 :	Fix the issue of TurboWriter under Windows 10 64 bits.
+v2.20.006 :	Add NAND Bad Block Rule CMD.
+v2.30.002 :	Support N3290xG & N3290xH
+v2.30.003 :	Fix Booting fail issue without USER DEFINE SETTING
+
+[N3291]
+2012/01/16-v06: FA95 Turbowriter firmware 1st version (FA95_musb.bin & FA95_musb_FullSpeed.bin)
+2012/01/20-v06: Support Hynix NAND H27UAG8T2B(H27UAG8T2BTR)
+2012/04/06-v06: Support 4KB page size with BCH T24 NAND flash.
+		Support new NAND flash Micron MT29F16G08CBACA/MT29F32G08CBACA.
+		Change BCH from T8 to T24 for NAND flash Micron MT29F16G08CBACA/MT29F32G08CBACA.
+		Fix H27UAG8T2ATR Verify error issue
+		Fix MLC NAND flash writing sequence issue
+2012/04/11-v06: Add T24 BCH correct data function
+2012/05/10-v06: Fix long time for USB Connection issue 
+		Fix Remaining MLC NAND flash writing sequence issue	
+2012/06/13-v06: Support MXIC MX25L25635E SPI flash
+		Fix SPI flash issue when Turbowriter can't calculate the spi flash size.
+2012/07/10-v06: Support 4-Byte Address mode for SPI flash larger than 16MB
+2012/08/28-v06: Fix Wrong NAND Disk size issue when using NAND ID.ini function
+2013/03/04-v06: Fix the issue that can't see the SPI image list & Support GigaDevice SPI flash
+2013/03/14-v06: Using SPIFLASH ID.ini function to support the SPI flash that not support (Size unit is KB)
+		[ID]		[SIZE]	
+		C84017		8192
+2013/03/25-v06: Fix SD set system area bug (Write operation doesn't work when image list exists and system area value is default value - 0xFFFFFFFF)
+2013/05/08-v06: Fix SD port 2 fail issue
+		Modify SPI flash Read/Write unit from Byte to Word
+2013/07/12-v06: Fix SD issue (Sometimes SD card is formated when SD card is first time written by Turbowriter)
+2014/06/20-v06: Check NAND Bad Block status before erase function
+2014/06/26-v06: Support NAND Normal/UBIFS mode
+2014/08/25-v06: Fix NAND flash property error with NAND Power-on-setting
+		Autowriter and Turbowriter use the same firmware code now.
+2014/11/07-v06: Add SPI Flash Reset Command to avoid 4-Byte Address mode issue
+2014/12/25-v06: Support UBIFS Image
+2015/01/15-v06: Fix NAND operation fail issue
+2015/03/27-v06: Fix Connection Fail issue when other device is connected to SPI pins.
+2015/07/28-v06: Support new NAND flash MXIC MX30LF1G18AC.
+2015/10/06-v06: Fix NAND Erase Fail issue (when Bad Block).
+2015/10/07-v06: Fix NAND Set System Reserved Area Fail issue (when Bad Block).
+2017/05/03-v06: Change MSC device to Virtual disk for compatibility issue.
+2017/09/25-v06: Fix SPI issue. (Block 0 will be wrong after writing last block of 16MB SPI Flash)
+2017/12/27-v06: Add NAND Bad Block Rule CMD
+                Force the status field of CSW to 0 for Update Fail issue
+2019/04/18-v06: Modify NAND Bad Block check rule for UBIFS
+2019/10/15-v06: Fix unstable issue
+
+Notice: If you want to fix the USB transfer speed in FullSpeed mode, please rename the file 
+	FA95_musb_FullSpeed.bin to FA95_musb.bin and replace the origrinal one.
+
+
+[N3292]
+2013/09/06-v06: FA92 Turbowriter firmware 1st version (FA92_musb.bin & FA92_musb_FullSpeed.bin)
+2013/09/24-v06: Fix Download to DRAM Fail issue
+2013/10/25-v06: Fix NAND Power-on-setting fail issue
+2014/06/20-v06: Check NAND Bad Block status before erase function
+2014/06/26-v06: Support NAND Normal/UBIFS mode
+2014/08/25-v06: Fix NAND flash property error with NAND Power-on-setting
+		Autowriter and Turbowriter use the same firmware code now.
+2014/11/07-v06: Add SPI Flash Reset Command to avoid 4-Byte Address mode issue
+2014/11/10-v06: Support eMMC
+2014/12/25-v06: Support UBIFS Image
+2015/03/27-v06: Fix Connection Fail issue when other device is connected to SPI pins.
+2015/07/28-v06: Support new NAND flash MXIC MX30LF1G18AC.
+2015/10/06-v06: Fix NAND Erase Fail issue (when Bad Block).
+2015/10/07-v06: Fix NAND Set System Reserved Area Fail issue (when Bad Block).
+2017/05/03-v06: Change MSC device to Virtual disk for compatibility issue.
+2017/09/25-v06: Fix SPI issue. (Block 0 will be wrong after writing last block of 16MB SPI Flash)
+2017/12/27-v06: Add NAND Bad Block Rule CMD
+                Force the status field of CSW to 0 for Update Fail issue
+2018/08/17-v06: Remove String "FA92"
+2019/04/18-v06: Modify NAND Bad Block check rule for UBIFS
+2019/10/15-v06: Fix unstable issue
+2020/11/10-v06: Support MT29F4G08ABAEAWP NAND flash
+2021/04/29-v06: Support NAND BCH Power On Setting for 2K Page NAND flash
+2022/08/09-v06: Remove code for set bad block as good block if all data is 0xFF after block erase
+
+Notice: If you want to fix the USB transfer speed in FullSpeed mode, please rename the file 
+	FA92_musb_FullSpeed.bin to FA95_musb.bin and replace the origrinal one.
