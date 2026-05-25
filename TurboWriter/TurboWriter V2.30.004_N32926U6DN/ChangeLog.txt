@@ -30,7 +30,7 @@ v2.20.001 :	Support N3290xD & N3290xE
 			[N3290 USER_DEFINE]
 			[N3291 USER_DEFINE]
 			[N3292 USER_DEFINE]
-v2.20.002 :	Support NAND UBIFS mode in ini file ¡V NAND_MODE = 0/1:Normal Mode/UBIFS Mode
+v2.20.002 :	Support NAND UBIFS mode in ini file  V NAND_MODE = 0/1:Normal Mode/UBIFS Mode
 v2.20.003 :	Remove NAND UBIFS mode in ini file
 		Support NAND/SPI UBIFS Image
 v2.20.004 :	Fix N3292 (D Version) USB Booting Fail issue when DRAM Calibration Fails.
@@ -113,6 +113,7 @@ Notice: If you want to fix the USB transfer speed in FullSpeed mode, please rena
 2020/11/10-v06: Support MT29F4G08ABAEAWP NAND flash
 2021/04/29-v06: Support NAND BCH Power On Setting for 2K Page NAND flash
 2022/08/09-v06: Remove code for set bad block as good block if all data is 0xFF after block erase
+2026/05/12-v06: Fix Verify Enable fail issue
 
 Notice: If you want to fix the USB transfer speed in FullSpeed mode, please rename the file 
 	FA92_musb_FullSpeed.bin to FA95_musb.bin and replace the origrinal one.
